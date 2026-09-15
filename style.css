@@ -19,6 +19,9 @@
   --gutter: 20px;           /* боковые отступы на телефоне */
   --photo: 128px;           /* размер фото */
   --radius: 3px;            /* скругление углов */
+  --radius-photo: 10px;     /* скругление фото в шапке */
+  --photo-border: 3px;      /* толщина рамки фото */
+  --photo-frame: transparent; /* основной цвет рамки фото (виден только акцентный фрагмент) */
   --section-gap: 48px;      /* расстояние между секциями */
 
   /* Шрифт */
@@ -55,14 +58,29 @@ a:hover { text-decoration: underline; }
   text-align: center;
 }
 
-.hero__photo {
+/* Обёртка фото: рамка 3px — белая с акцентным фрагментом, угол задаёт скрипт */
+.hero__photo-wrap {
+  --glow-angle: 0deg;
   width: var(--photo);
   height: var(--photo);
-  object-fit: cover;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  display: block;
+  padding: var(--photo-border);
+  border-radius: var(--radius-photo);
   margin: 0 auto 24px;
+  background: conic-gradient(
+    from var(--glow-angle),
+    var(--accent) 0deg,
+    var(--photo-frame) 40deg,
+    var(--photo-frame) 320deg,
+    var(--accent) 360deg
+  );
+}
+
+.hero__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: calc(var(--radius-photo) - var(--photo-border));
+  display: block;
 }
 
 .hero__name {
@@ -234,7 +252,7 @@ a:hover { text-decoration: underline; }
     align-items: center;
   }
 
-  .hero__photo { margin: 0; }
+  .hero__photo-wrap { margin: 0; }
 
   .contacts {
     flex-direction: row;
