@@ -21,7 +21,7 @@ Preview the site with the `resume` config in `.claude/launch.json` (`python -m h
 
 `Docs/My skills.xlsx` — single sheet, two columns: `Раздел` (section) / `Что указать` (what to write). Sections: Личная информация, Цель / Позиция, Опыт работы, Образование, Навыки, Сертификаты / Курсы, Языки, Проекты. Edit content here first, then propagate to the HTML. `openpyxl` is not installed; read it via `zipfile` + `xl/sharedStrings.xml`, or use the `xlsx` skill.
 
-Contact data (phone `+7 903 579-18-43`, email `waidosddcube@gmail.com`, GitHub `3DAlex-souz`) must stay consistent across the xlsx, `index.html` (hero contacts + footer icons) and the Docs resume. The Docs resume still links the old handle `@Waidoss` — `3DAlex-souz` is the current one.
+Contact data (phone `+7 903 579-18-43`, email `waidosddcube@gmail.com`, GitHub `3DAlex-souz`) must stay consistent across the xlsx, `index.html` (hero contacts + footer icons) and the Docs resume.
 
 ## Site (`index.html` + `style.css`)
 
