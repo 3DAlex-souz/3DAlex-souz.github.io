@@ -248,16 +248,18 @@ a:hover { text-decoration: underline; }
     text-align: left;
     display: grid;
     grid-template-columns: var(--photo) 1fr;
-    gap: 32px;
+    gap: 24px 32px;
     align-items: center;
   }
 
-  .hero__photo-wrap { margin: 0; }
+  .hero__photo-wrap { margin: 0; align-self: start; } /* фото по верхнему краю */
 
   .contacts {
+    grid-column: 1 / -1; /* отдельной строкой под фото, на всю ширину */
     flex-direction: row;
     flex-wrap: nowrap;   /* три кнопки всегда в одну строку */
     gap: 8px;
+    margin-top: 0;
   }
 
   .contacts li { min-width: 0; }
