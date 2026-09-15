@@ -256,10 +256,17 @@ a:hover { text-decoration: underline; }
 
   .contacts {
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;   /* три кнопки всегда в одну строку */
+    gap: 8px;
   }
 
-  .contacts a { padding: 0 16px; }
+  .contacts li { min-width: 0; }
+
+  .contacts a {
+    padding: 0 12px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
 }
 
 .footer__links a {
