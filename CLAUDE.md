@@ -31,6 +31,16 @@ Contact data (phone `+7 903 579-18-43`, email `waidosddcube@gmail.com`, GitHub `
 - The photo is embedded as a base64 `data:image/jpeg` (source: `Docs/A_Sokolov.JPG`); re-encode if the photo changes. Keep `<meta name="description">`, `<title>` and `theme-color` in sync with content/theme changes.
 - External links: `souz-m3d.online`, `souz-m3d.ru`, `stabledif.ru/comfyui` — keep `target="_blank" rel="noopener"`.
 
+## PDF resume (`PDF/A.Sokolov_Ai_specialist.pdf`)
+
+Tracked in git and linked from the hero contacts row (`.contacts__pdf`, `download` link). It is rendered **from the site itself** (`index.html` + `style.css`, print styles at the bottom of `style.css`: `@page` A4 with 5mm margins, exact colors, `.contacts__pdf` hidden, external links print their URL) with headless Chrome:
+
+```bash
+"/c/Program Files/Google/Chrome/Application/chrome.exe" --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf="C:/Users/waido/YandexDisk/Cloud/RESUME/PDF/A.Sokolov_Ai_specialist.pdf" "file:///C:/Users/waido/YandexDisk/Cloud/RESUME/index.html"
+```
+
+**Rule: before any commit or push, regenerate the PDF first.** Sequence: finish the edits to `index.html` / `style.css` → run the command above → `git add PDF/` together with the other changes → commit → push. Never push a commit whose PDF is stale relative to `index.html`. The file name is fixed (`A.Sokolov_Ai_specialist.pdf`) — the hero link points to it.
+
 ## Printable resume (`Docs/A. Sokolov_qw_resume_example.html`)
 
 Self-contained single file: inline `<style>`, Google Fonts via `@import`, base64 photo. Has an `@media print` block — keep it working when changing styles.
@@ -39,3 +49,4 @@ Self-contained single file: inline `<style>`, Google Fonts via `@import`, base64
 - Each section is `<div class="section"><h2 class="section-title">EMOJI Title</h2>…</div>`; jobs use `.job` / `.job-header` / `.job-title` / `.job-company` / `.job-period` / `.job-description`; skills use `.skills-grid` > `.skill-category`; emphasis uses `<span class="highlight">`.
 - Brand colors: navy `#1a2a6c`, red `#b21f1f`. Reuse them rather than introducing new colors.
 - `.footer` contains "Последнее обновление: <date>" — bump it whenever the content changes.
+- Has `@page { size: A4; margin: 12mm }` for printing.

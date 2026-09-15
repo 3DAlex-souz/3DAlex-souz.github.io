@@ -84,10 +84,11 @@ a:hover { text-decoration: underline; }
 }
 
 .hero__name {
-  font-size: clamp(2.2rem, 8vw, 3.4rem);
+  font-size: clamp(2rem, 7vw, 2.9rem);
   font-weight: 700;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .hero__role {
@@ -129,6 +130,13 @@ a:hover { text-decoration: underline; }
 .contacts a:hover {
   border-color: var(--accent);
   text-decoration: none;
+}
+
+/* Кнопка «Скачать PDF» — иконка + подпись, на десктопе прижата вправо */
+.contacts__pdf a {
+  gap: 8px;
+  color: var(--accent);
+  font-weight: 600;
 }
 
 /* ---------- Секции ---------- */
@@ -263,6 +271,7 @@ a:hover { text-decoration: underline; }
   }
 
   .contacts li { min-width: 0; }
+  .contacts__pdf { margin-left: auto; }
 
   .contacts a {
     padding: 0 12px;
@@ -280,3 +289,14 @@ a:hover { text-decoration: underline; }
   transition: color .15s;
 }
 .footer__links a:hover { color: var(--accent); }
+
+/* ---------- Печать / PDF ---------- */
+@page { size: A4; margin: 5mm; }
+
+@media print {
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { background-attachment: scroll; }
+  .contacts__pdf { display: none; }      /* кнопка «PDF» внутри самого PDF не нужна */
+  .section, .card { break-inside: avoid; }
+  a[target="_blank"]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: var(--muted); }
+}
