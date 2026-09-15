@@ -1,0 +1,255 @@
+/* ==========================================================
+   Сайт-визитка — Александр Соколов
+   Все настройки цветов, отступов и шрифтов — в :root ниже.
+   ========================================================== */
+
+:root {
+  /* Цвета */
+  --bg: #0f1117;            /* фон страницы */
+  --bg-light: #1c2030;      /* светлый край градиента фона */
+  --card: #171a23;          /* фон карточек и чипов */
+  --border: #262a36;        /* тонкие линии */
+  --text: #e6e8ee;          /* основной текст */
+  --muted: #9aa0ad;         /* вторичный текст */
+  --accent: #6b7fd7;        /* акцент (осветлённый фирменный navy) */
+  --accent-red: #b21f1f;    /* фирменный красный — только для маркера */
+
+  /* Размеры */
+  --max-width: 720px;       /* ширина колонки контента */
+  --gutter: 20px;           /* боковые отступы на телефоне */
+  --photo: 128px;           /* размер фото */
+  --radius: 3px;            /* скругление углов */
+  --section-gap: 48px;      /* расстояние между секциями */
+
+  /* Шрифт */
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------- База ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text);
+  min-height: 100vh;
+  background: var(--bg) linear-gradient(180deg, var(--bg-light) 0%, var(--bg) 40%) no-repeat;
+  background-attachment: fixed;
+  padding: 0 var(--gutter);
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* ---------- Шапка (hero) ---------- */
+.hero {
+  padding: 56px 0 40px;
+  text-align: center;
+}
+
+.hero__photo {
+  width: var(--photo);
+  height: var(--photo);
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  display: block;
+  margin: 0 auto 24px;
+}
+
+.hero__name {
+  font-size: clamp(2.2rem, 8vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.hero__role {
+  margin-top: 14px;
+  font-size: clamp(1.05rem, 3.5vw, 1.35rem);
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.hero__city {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Контакты-кнопки */
+.contacts {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.contacts a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.contacts a:hover {
+  border-color: var(--accent);
+  text-decoration: none;
+}
+
+/* ---------- Секции ---------- */
+.section {
+  padding-top: var(--section-gap);
+}
+
+.section__title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-left: 12px;
+  border-left: 2px solid var(--accent-red);
+  margin-bottom: 18px;
+}
+
+.section p + p { margin-top: 12px; }
+
+.credo {
+  margin-top: 16px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Карточка проекта */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+}
+
+.card__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.card__title { font-size: 1.25rem; font-weight: 600; }
+.card__meta { color: var(--muted); font-size: 0.95rem; }
+
+.card ul { list-style: none; margin-top: 12px; }
+.card li { padding-left: 16px; position: relative; margin-top: 6px; }
+.card li::before {
+  content: "";
+  position: absolute; left: 0; top: 0.7em;
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+/* Цифры проекта */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.stats b {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.stats span { color: var(--muted); font-size: 0.85rem; line-height: 1.3; display: block; }
+
+/* Навыки — чипы */
+.skills { display: grid; gap: 18px; }
+
+.skills h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+
+.chips li {
+  padding: 6px 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+
+/* Образование и языки */
+.facts { list-style: none; display: grid; gap: 14px; }
+.facts b { display: block; font-weight: 600; }
+.facts span { color: var(--muted); font-size: 0.95rem; }
+
+/* ---------- Подвал ---------- */
+.footer {
+  margin-top: var(--section-gap);
+  padding: 28px 0 40px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.footer__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; margin-bottom: 10px; }
+
+/* ---------- Экраны от 640px ---------- */
+@media (min-width: 640px) {
+  body { font-size: 18px; }
+
+  .hero {
+    padding: 80px 0 48px;
+    text-align: left;
+    display: grid;
+    grid-template-columns: var(--photo) 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .hero__photo { margin: 0; }
+
+  .contacts {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .contacts a { padding: 0 16px; }
+}
+
+.footer__links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  color: var(--muted);
+  transition: color .15s;
+}
+.footer__links a:hover { color: var(--accent); }
